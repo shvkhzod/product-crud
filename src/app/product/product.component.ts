@@ -12,18 +12,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
+  /**
+   * The JSON data of product
+   */
   @Input() productData: any;
+
+  /**
+   * Event to trigger to delete the product
+   */
   @Output() delete = new EventEmitter<void>();
 
-  filter: string = "";
-
-  setFilter(filter: string): void {
-    this.filter = filter;
-  }
-
+  /**
+   * Method for deleting the product
+   */
   onDelete(): void {
     this.delete.emit();
   }
 
-  
+
 }

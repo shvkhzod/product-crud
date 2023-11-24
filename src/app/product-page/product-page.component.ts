@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../product/product.component';
 import { RouterOutlet, Routes, RouterLink, RouterLinkActive,  } from '@angular/router';
 import { ProductService } from '../product/product.service';
-import { DatePipe } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 
@@ -15,8 +14,19 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './product-page.component.css'
 })
 export class ProductPageComponent {
+  /**
+   * The list of products
+   */
   products: any[];
+
+  /**
+   * The filter to apply to the products
+   */
   filter: string = 'hot';
+
+  /**
+   * The product name to search for
+   */
   searchItem: string = '';
 
   constructor(private productService: ProductService) {
@@ -24,13 +34,21 @@ export class ProductPageComponent {
 
   }
 
+  /**
+   * Apply filter to the search results
+   * @param filter The filter to apply
+   */
   setFilter(filter: string): void {
     this.filter = filter; // Set the filter variable directly
   }
 
+  /**
+   * Delete a product
+   * @param index The index of the product to delete
+   */
   deleteProduct(index: number): void {
-  console.log('product deleted')
-  this.productService.deleteProduct(index);
-  this.products = this.productService.getProducts();
-  }
+    console.log('product deleted')
+    this.productService.deleteProduct(index);
+    this.products = this.productService.getProducts();
+    }
 }

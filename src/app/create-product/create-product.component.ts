@@ -13,15 +13,38 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './create-product.component.css'
 })
 export class CreateProductComponent {
+  /**
+   * The image selected by the user, stored as a base64 string
+   */
   selectedImage: string | ArrayBuffer | null = null;
+
+  /**
+   * The list of variants
+   */
   variants: string[] = ['default'];
+
+  /**
+   * The title of the product
+   */
   title: string = '';
+
+  /**
+   * The code of the product
+   */
   code: string = '';
+
+  /**
+   * The selected option of the product
+   */
   selectedOption: string | null = "hot";
 
 
   constructor(private productService: ProductService,private router: Router) {}
 
+  /**
+   * Handle the change event of the file input
+   * @param event The event of the file input
+   */
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
@@ -29,6 +52,10 @@ export class CreateProductComponent {
     }
   }
 
+  /**
+   * Read the file and store it as a base64 string
+   * @param file The file to read
+   */
   readFile(file: File): void {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -37,19 +64,34 @@ export class CreateProductComponent {
     reader.readAsDataURL(file);
   }
 
+  /**
+   * Add a variant to the list of variants
+   */
   addVariant() {
     this.variants.push('default');
 
   }
 
+  /**
+   * Update the data of a variant
+   * @param index - index of variant in the array of variants
+   * @param newData - new data to replace the old data
+   */
   onVariantChange(index: number, newData: string) {
     this.variants[index] = newData;
   }
 
+  /**
+   * Remove a variant from the list of variants
+   * @param index - index of variant in the array of variants
+   */
   removeVariant(index: number) {
     this.variants.splice(index, 1);
   }
 
+  /**
+   * Create a product
+   */
   createProduct(): void {
     console.log('product added')
     const product = {
@@ -61,16 +103,17 @@ export class CreateProductComponent {
       createdAt: new Date()
     };
 
-    // Save the product using the ProductService
+    /**
+     * Add the product to the list of products
+     */
     this.productService.addProduct(product);
+
+    /**
+     * Navigate to the home page
+     */
     this.router.navigate(['/'])
 
-    // You can also clear the form or perform any other necessary actions
-    this.title = '';
-    this.code = '';
-    this.selectedImage = null;
-    this.variants = ['default'];
-    this.selectedOption = null;
+
   }
 
 }

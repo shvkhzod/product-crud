@@ -19,10 +19,17 @@ export class VariantComponent {
   @Output() variantChange = new EventEmitter<string>();
   @Output() remove = new EventEmitter<void>();
 
+
+  /**
+   * Update content of variantData and emit the change
+   */
   onVariantChange() {
     this.variantChange.emit(this.variantData);
   }
 
+  /**
+   * Remove variant
+   */
   removeVariant() {
     this.remove.emit();
   }

@@ -1,78 +1,80 @@
-p {
-  color: white;
+@media screen and (max-width: 767px) {
+  p {
+    color: white;
+  }
+
+  .product-wrapper {
+    height: 140px;
+    display: flex;
+    flex-direction: row;
+    background-color: #222222;
+    border-radius: 16px;
+
+  }
+
+  .product-image {
+    width: 140px;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 16px 0 0 16px;
+
+  }
+
+  .product-info {
+    width: 100%;
+    padding: 12px
+  }
+
+  .product-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  .product-name {
+    font-size: 16px;
+    font-weight: medium;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .date {
+    font-size: 14px;
+  }
+
+  .product-variants {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  .product-growth {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+    align-items: center;
+    gap: 16px;
+
+  }
+
+  .percentage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  .product-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+
 }
-
-.product-wrapper {
-  height: 140px;
-  display: flex;
-  flex-direction: row;
-  background-color: #222222;
-  border-radius: 16px;
-
-}
-
-.product-image {
-  width: 140px;
-  height: auto;
-  object-fit: cover;
-  overflow: hidden;
-  border-radius: 16px 0 0 16px;
-
-}
-
-.product-info {
-  width: 100%;
-  padding: 12px
-}
-
-.product-header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-
-.product-name {
-  font-size: 16px;
-  font-weight: medium;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
-.date {
-  font-size: 14px;
-}
-
-.product-variants {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-}
-
-.product-growth {
-  display: flex;
-  flex-direction: row;
-  margin-top: 16px;
-  align-items: center;
-  gap: 16px;
-
-}
-
-.percentage {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-
-.product-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-
-
