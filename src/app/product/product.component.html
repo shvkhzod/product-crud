@@ -1,0 +1,30 @@
+<div class="product-wrapper">
+  <img [src]="productData.image"  alt="product image" class="product-image" />
+
+  <div class="product-info">
+    <div class="product-header">
+      <h3 class="product-name">{{productData.title}}</h3>
+      <p class="date">{{productData.createdAt | date: "shortDate"}}</p>
+    </div>
+
+    <div class="product-variants">
+      <p>{{productData.variants[0]}}</p>
+      <p>* {{productData.variants.length}} variants</p>
+    </div>
+
+    <p class="product-stats">899 Sales in last 3 days</p>
+    <div class="product-footer">
+      <div class="product-growth">
+        <p>Sales</p>
+        <div class="percentage">
+          <img src="../../assets/arrow-up.svg" alt="arrow up" />
+          <p>20%</p>
+        </div>
+      </div>
+
+      <img src="../../assets/delete.svg" alt="ellipsis" (click)="onDelete()" />
+
+    </div>
+
+  </div>
+</div>

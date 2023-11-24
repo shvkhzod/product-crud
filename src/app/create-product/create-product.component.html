@@ -1,0 +1,68 @@
+<div class="create-product">
+  <h2 class="header-title">Create Product</h2>
+
+  <h2 class="gen-title">Image</h2>
+  <div class="image-upload-wrapper">
+    <input type="file" (change)="onFileSelected($event)" style="display: none" #fileInput />
+    <img *ngIf="!selectedImage"  src="../../assets/plus.svg" (click)="fileInput.click()" alt="upload image" class="uploadIc"/>
+
+    <img *ngIf="selectedImage" [src]="selectedImage"  (click)="fileInput.click()" alt="Selected Image" class="selectedImg" />
+  </div>
+
+  <h2 class="gen-title">Product</h2>
+
+  <div class="inputs">
+    <div class="theInput">
+      <label for="title">Title</label>
+    <input type="text" placeholder="Enter product title" class="input" name="title" [(ngModel)]="title" />
+    </div>
+
+    <div class="theInput">
+      <label for="code">Code</label>
+    <input type="text" placeholder="Enter product code" class="input" name="code" [(ngModel)]="code" />
+    </div>
+
+  </div>
+
+  <div class="variants-wrapper">
+    <div class="variants-header">
+      <h2 class="gen-title">Variants</h2>
+      <p class="add-variant" (click)="addVariant()">Add Variant</p>
+    </div>
+
+  <div  class="variantList">
+
+    <div *ngFor="let variant of variants; let i = index">
+      <app-variant
+      [variantData]="variant"
+      (variantChange)="onVariantChange(i, $event)"
+      (remove)="removeVariant(i)"
+    ></app-variant>
+    </div>
+  </div>
+
+  </div>
+
+  <h2 class="gen-title">Type</h2>
+  <div class="options">
+    <div class="theOption">
+      <input type="radio" name="isHot" value="hot" [(ngModel)]="selectedOption" />
+      <p>Hot</p>
+    </div>
+
+    <div class="theOption">
+      <input type="radio" name="isUpcoming" value="upcoming" [(ngModel)]="selectedOption" />
+      <p >Upcoming</p>
+    </div>
+  </div>
+
+  <button class="submitBtn" (click)="createProduct()">
+    Create Product
+
+  </button>
+
+
+
+</div>
+
+

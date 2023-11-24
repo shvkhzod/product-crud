@@ -1,0 +1,44 @@
+
+<main class="main">
+  <div class="products-page">
+    <h2>Market Products</h2>
+
+    <div class="searchBar">
+      <img src="../assets/search-icon.svg"
+      class="searchIcon"/>
+      <input type="text"
+       placeholder="Search"
+       [(ngModel)]="searchItem"
+       class="searchBox"/>
+    </div>
+
+    <div class="options">
+      <p [class.selected]="filter === 'hot'" (click)="setFilter('hot')">Hot</p>
+      <p [class.selected]="filter === 'upcoming'"(click)="setFilter('upcoming')">Upcoming</p>
+    </div>
+
+    <div class="product-list">
+      <div *ngFor="let product of products; let i = index" class="product-item">
+        <div *ngIf="product.selectedOption === 'hot' && filter==='hot' && product.title == searchItem ">
+          <product [productData]="product"  (delete)="deleteProduct(i)"></product>
+          </div>
+
+          <div *ngIf="product.selectedOption === 'upcoming' && filter==='upcoming' && product.title == searchItem ">
+            <product [productData]="product"  (delete)="deleteProduct(i)"></product>
+            </div>
+      </div>
+
+    </div>
+
+    <button class="createBtn">
+      <a [routerLink]= "['/createProduct']">
+        Create Product
+      </a>
+    </button>
+  </div>
+</main>
+
+
+
+
+
